@@ -1,10 +1,32 @@
 doctype html
 html
   head
-  meta(name='viewport', content='width=device-width,initial-scale=1.0')
-  title= title
-  link(rel='stylesheet', href='/bootstrap/css/sinan.bootstrap.css')
+   meta(name='viewport', content='width=device-width, initial-scale=1.0')
+   title= title
+   link(rel='stylesheet', href='/bootstrap/css/sinan.bootstrap.css')
   body
+   //navbar-default ve navbar-fixed-top css sınıflarını kullan
+   .navbar-default.navbar-fixed-top
+    //taşıyıcı tanımlama
+    .container
+     .navbar-header
+      a.navbar-brand(href='/') MekanBul
+      //mobil uyumlu hamburger stili menü oluştur
+      button.navbar-toggle(type='button',data-toggle='collapse',data-target='#navbar-main')
+       span.icon-bar
+       span.icon-bar
+       span.icon-bar
+     #navbar-main.navbar-collapse.collapse
+      //hamburger menüsündeki aşağı açılır linkleri oluştur.
+      ul.nav.navbar-nav
+       li
+        a(href='/hakkinda') Hakkında            
+   .container
+    //içeriğin geleceği kısım
     block content
+    footer
+        .col-12
+          //Copyright metni oluştur.
+          small &copy; @nafidurmus 2017
   script(src='/javascripts/jquery-3.1.1.min.js')
-  script(src='/bootstrap/js/bootsrap.min.js')
+  script(src='/bootstrap/js/bootstrap.min.js')

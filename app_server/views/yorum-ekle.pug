@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .row.page-header
+    .col-lg-12
+      h1 Starbucks'a Yorum Yap
+  .row
+    .col-xs-12.col-md-6
+      form.form-horizontal(action="/mekan", method="get", role="form", id="yorumEkle")   
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="name") İsim
+          .col-xs-12.col-sm-10
+            input#name.form-control(name="name")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="rating") Puan
+          .col-xs-12.col-sm-2
+            select#rating.form-control.input-sm(name="rating")
+              option 5
+              option 4
+              option 3
+              option 2
+              option 1
+        .form-group
+          label.col-sm-2.control-label(for="review") Yorum
+          .col-sm-10
+            textarea#review.form-control(name="review", rows="5")
+        button.btn.btn-default.pull-right Yorumumu Ekle
+    .col-xs-12.col-md-4
+
+    
