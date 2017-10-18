@@ -1,59 +1,32 @@
 extends layout
+include ortak_fonksiyonlar/fonksiyonlar
 block content
   //Başlık bölümündeki bilgileri ayarlaya
   #banner.page-header
     //satır oluştur
     .row
       .col-lg-6
-        h1
-          |MekanBul
-          small &nbsp;Yakınınızdaki mekanları keşfedin!
+        h1= sayfaBaslik.siteAd
+          small &nbsp #{sayfaBaslik.aciklama}
   .row
     //mobil uyumlu listeleme
     .col-xs-12.col-sm-12
-      //Liste grubu oluştur
-      .row.list-group
-       //Listeye öğe ekleme. Birden fazla eleman ekliycekseniz
-       //aşağıdaki kodu kopyalayın ve yapıştırın
-       .col-xs-12.list-group-item
-           //Linklerin, yıldızların ve adresin oluşturulması
-           h4
-             a(href='/mekan/') Starbucks
-             small &nbsp;
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star-empty
-           span.badge.pull-right.badge-default 10km
-           p.address Centrum Garden AVM
-           p
-              span.label.label-warning Dünya Kahveleri
-              | &nbsp;
-              span.label.label-warning Kekler
-              | &nbsp;
-              span.label.label-warning Pastalar
-              | &nbsp;
-      .row.list-group
-       //Listeye öğe ekleme. Birden fazla eleman ekliycekseniz
-       //aşağıdaki kodu kopyalayın ve yapıştırın
-       .col-xs-12.list-group-item
-           //Linklerin, yıldızların ve adresin oluşturulması
-           h4
-             a(href='/mekan/') Gloria Jeans Coffee
-             small &nbsp;
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star
-             span.glyphicon.glyphicon-star-empty
-             span.glyphicon.glyphicon-star-empty
-           span.badge.pull-right.badge-default 5.3km
-           p.address İyaş AVM
-           p
-              span.label.label-warning Dünya Kahveleri
-              | &nbsp;
-              span.label.label-warning Çay
-              | &nbsp;
-              span.label.label-warning Kek, Pasta
-              | &nbsp;             
+      //Liste grubu oluştur // buradan başladık derste 18 ekim
+      each mekan in mekanlar
+       .row.list-group
+        //Listeye öğe ekleme. Birden fazla eleman ekliycekseniz
+        //aşağıdaki kodu kopyalayın ve yapıştırın
+        .col-xs-12.list-group-item
+            //Linklerin, yıldızların ve adresin oluşturulması
+            h4
+              a(href='/mekan/') #{mekan.ad}
+              small &nbsp;
+              +puanOlustur(mekan.puan)
+              
+            span.badge.pull-right.badge-default= mekan.mesafe
+            p.address= mekan.adres
+            p
+              each imkan in mekan.imkanlar
+                span.label.label-warning= imkan
+                | &nbsp;
     .col-xs-12.col-sm-4

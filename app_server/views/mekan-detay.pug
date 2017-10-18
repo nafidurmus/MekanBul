@@ -1,9 +1,10 @@
 extends layout
+include ortak_fonksiyonlar/fonksiyonlar
 block content
   .row.page-header
     .col-lg-12
       //Mekanın adı
-      h1 Starbucks
+      h1= mekanBilgisi.ad
   .row
     //Responsive yap
     .col-xs-12.col-md-12
@@ -11,23 +12,20 @@ block content
         .col-xs-12.col-sm-6
           //Yıldızları ekle
           p.rating
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star-empty
+             +puanOlustur(mekanBilgisi.puan)
           //Mekanın adresi
-          p Centrum Garden AVM
+          p= mekanBilgisi.adres
           .panel.panel-primary
             .panel-heading
               h2.panel-title Açılış Saatleri
             .panel-body
+              each saat in mekanBilgisi.saatler
                 p
-                  | Pazartesi-Cuma: 7:00-23:00
-                p
-                  | Cumartesi: 8:00-22:00
-                p
-                  | Pazar: Kapalı
+                  | #{saat.günler}; 
+                  if saat.kapali
+                    | Kapalı
+                  else
+                    |#{saat.acilis}-#{saat.kapanis}
           .panel.panel-primary
             .panel-heading
               h2.panel-title Neler Var
