@@ -11,7 +11,8 @@ const anaSayfa=function(req,res){
 			'adres': 'Centrum Garden',
 			'puan': 4,
 			'imkanlar': ['Kahve','Pasta','Kek','Türk Kahvesi'],
-			'mesafe': '11km'
+			'mesafe': '11km',
+			'id': 1
 
 		  },
 		  {
@@ -19,7 +20,9 @@ const anaSayfa=function(req,res){
 			'adres': 'Iyas',
 			'puan': 3,
 			'imkanlar': ['Kahve','Latte','Kek','Türk Kahvesi'],
-			'mesafe': '7km'
+			'mesafe': '7km',
+			'id': 2
+
 
 		  },
 		  {
@@ -27,7 +30,8 @@ const anaSayfa=function(req,res){
 			'adres': 'Kafeler Caddesi',
 			'puan': 2,
 			'imkanlar': ['Kahve','Kek'],
-			'mesafe': '14km'
+			'mesafe': '14km',
+			'id': 3
 
 		  },
 		  {
@@ -35,9 +39,20 @@ const anaSayfa=function(req,res){
 			'adres': 'Kafeler Caddesi',
 			'puan': 2,
 			'imkanlar': ['Cay','Duble Cay'],
-			'mesafe': '14km'
+			'mesafe': '14km',
+			'id': 4
+
+		  },
+		  {
+			'ad': 'Kahve Dünyası',
+			'adres': 'Iyas',
+			'puan': 1,
+			'imkanlar': ['Kahve','Cay','Latte'],
+			'mesafe': '7km',
+			'id': 5
 
 		  }
+
 
 
 
@@ -90,6 +105,7 @@ const mekanBilgisi=function(req,res){
 			     }
 			]
 		}
+	
 
 	});
 }

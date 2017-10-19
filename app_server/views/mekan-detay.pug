@@ -30,18 +30,10 @@ block content
             .panel-heading
               h2.panel-title Neler Var
             .panel-body
-                span.label.label-warning
+              each imkan in mekanBilgisi.imkanlar
+                span.label.label-warning= imkan
                   span.glyphicon.glyphicon-ok
-                  | &nbsp; Dünya Kahveleri
-                | &nbsp;
-                span.label.label-warning
-                  span.glyphicon.glyphicon-ok
-                  | &nbsp; Kekler
-                | &nbsp;
-                span.label.label-warning
-                  span.glyphicon.glyphicon-ok
-                  | &nbsp; Pastalar
-                | &nbsp;
+                | &nbsp;     
         //Haritayı ekleme işlemi
         .col-xs-12.col-sm-6.location-map
           .panel.panel-primary
@@ -55,22 +47,19 @@ block content
           .panel.panel-primary.review-panel
             .panel-heading
               //Yorum ekle düğmesini ekle
-              a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle
+              a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Yapmalısın :)
               h2.panel-title Müşteri Yorumları
             .panel-body.review-container
+              each yorum in mekanBilgisi.yorumlar
                 .row
                  .review
                   .well.well-sm.review-header
-                    span.rating
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-empty
-                    span.reviewAuthor Asım Sinan Yüksel
-                    small.reviewTimestamp  11 EKim 2017
+                    spam.rating
+                      +puanOlustur(yorum.puan)
+                    span.reviewAuthor #{yorum.yorumYapan}
+                    small.reviewTimestamp  | #{yorum.tarih}
                   .col-xs-12
-                    p Kahveleri çok güzel.
+                    p #{yorum.yorumMetni}
 
 
                     
