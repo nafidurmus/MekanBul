@@ -1,9 +1,9 @@
-const anaSayfa=function(req,res){
+const anaSayfa=function(req,res,id){
 	res.render('mekanlar-liste',{
 		'baslik':'Anasayfa',
 		'sayfaBaslik': {
 			'siteAd':'MekanBul',
-			'aciklama':'Yakınınınzdaki meknaları görün !'
+			'aciklama':'Yakında hangi kafeler var bi keşfet bari !'
 		},
 		'mekanlar': [
 		 {
