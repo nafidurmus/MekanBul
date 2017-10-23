@@ -1,10 +1,25 @@
 extends layout
 include ortak_fonksiyonlar/fonksiyonlar
 block content
+  -var gelenMekan = mekanBilgisi[0]
+    if id == 1
+      -gelenMekan = mekanBilgisi[0]
+    else if id == 2
+      -gelenMekan = mekanBilgisi[1]
+    else if id == 3
+      -gelenMekan = mekanBilgisi[2]
+    else if id == 4
+      -gelenMekan = mekanBilgisi[3]
+    else 
+      -gelenMekan = mekanBilgisi[4]
+      
+
+  
   .row.page-header
     .col-lg-12
+
       //Mekanın adı
-      h1= mekanBilgisi.ad
+      h1= gelenMekan.ad
   .row
     //Responsive yap
     .col-xs-12.col-md-12
@@ -12,14 +27,14 @@ block content
         .col-xs-12.col-sm-6
           //Yıldızları ekle
           p.rating
-             +puanOlustur(mekanBilgisi.puan)
+             +puanOlustur(gelenMekan.puan)
           //Mekanın adresi
-          p= mekanBilgisi.adres
+          p= gelenMekan.adres
           .panel.panel-primary
             .panel-heading
               h2.panel-title Açılış Saatleri
             .panel-body
-              each saat in mekanBilgisi.saatler
+              each saat in gelenMekan.saatler
                 p
                   | #{saat.günler}; 
                   if saat.kapali
@@ -30,7 +45,7 @@ block content
             .panel-heading
               h2.panel-title Neler Var
             .panel-body
-              each imkan in mekanBilgisi.imkanlar
+              each imkan in gelenMekan.imkanlar
                 span.label.label-warning= imkan
                   span.glyphicon.glyphicon-ok
                 | &nbsp;     
@@ -47,10 +62,10 @@ block content
           .panel.panel-primary.review-panel
             .panel-heading
               //Yorum ekle düğmesini ekle
-              a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Yapmalısın :)
+              a.btn.btn-default.pull-right(href='/mekan/#{gelenMekan._id}/yorum/yeni') Yorum Yapmalısın :)
               h2.panel-title Müşteri Yorumları
             .panel-body.review-container
-              each yorum in mekanBilgisi.yorumlar
+              each yorum in gelenMekan.yorumlar
                 .row
                  .review
                   .well.well-sm.review-header

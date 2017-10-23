@@ -1,4 +1,4 @@
-const anaSayfa=function(req,res,id){
+const anaSayfa=function(req,res){
 	res.render('mekanlar-liste',{
 		'baslik':'Anasayfa',
 		'sayfaBaslik': {
@@ -63,12 +63,13 @@ const anaSayfa=function(req,res,id){
 
 }
 
-const mekanBilgisi=function(req,res,id){
+const mekanBilgisi=function(req,res){
 	res.render('mekan-detay',
-		id = req.query.id,
+		
 	{
 		'baslik':'Mekan Bilgisi',
 		'sayfaBaslik': 'Starbucks',
+		'id' : req.query.id,
 		'mekanBilgisi':[
 		               { 
 
