@@ -63,11 +63,13 @@ const anaSayfa=function(req,res,id){
 
 }
 
-const mekanBilgisi=function(req,res){
-	res.render('mekan-detay',{
+const mekanBilgisi=function(req,res,id){
+	res.render('mekan-detay',
+		id = req.query.id,
+	{
 		'baslik':'Mekan Bilgisi',
 		'sayfaBaslik': 'Starbucks',
-		'mekanBilgisi': 
+		'mekanBilgisi':[
 		               { 
 
 			'ad': 'Starbucks komşum',
@@ -105,15 +107,10 @@ const mekanBilgisi=function(req,res){
 			     	'tarih': '18 Ekim 2017',
 			     	'yorumMetni': 'kahvesi çok iyi yaa :)'
 			     }
-			]
-		
-		}
-	}
-	/*
+			]	
+	},
 	{
-		'baslik':'Mekan Bilgisi',
-		'sayfaBaslik': 'Gloria Jeans',
-		'mekanBilgisi': { 
+		
 			'ad': 'Gloria Jeans',
 			'adres': 'Iyas',
 			'puan': 2,
@@ -129,7 +126,6 @@ const mekanBilgisi=function(req,res){
 			    	'kapanis':'24:00',
 			    	'kapali':false
 			    },
-
 			    {
 			    	'günler':'Cumartesi',
 			    	'acilis':'7:00',
@@ -140,7 +136,6 @@ const mekanBilgisi=function(req,res){
 			    	'günler':'Pazar',
 			    	'kapali':false
 			    }
-
 			],
 			'yorumlar': [
 			     {
@@ -150,14 +145,8 @@ const mekanBilgisi=function(req,res){
 			     	'yorumMetni': 'böyle bi latte görmedi'
 			     }
 			]
-
-		
-		}
 	},
-	{
-		'baslik':'Mekan Bilgisi',
-		'sayfaBaslik': 'Old Bear Cafe',
-		'mekanBilgisi': { 
+	{ 
 			'ad': 'Old Bear',
 			'adres': 'Kafeler Caddesi',
 			'puan': 4,
@@ -173,7 +162,6 @@ const mekanBilgisi=function(req,res){
 			    	'kapanis':'24:00',
 			    	'kapali':false
 			    },
-
 			    {
 			    	'günler':'Cumartesi',
 			    	'acilis':'10:00',
@@ -184,7 +172,6 @@ const mekanBilgisi=function(req,res){
 			    	'günler':'Pazar',
 			    	'kapali':false
 			    }
-
 			],
 			'yorumlar': [
 			     {
@@ -194,14 +181,9 @@ const mekanBilgisi=function(req,res){
 			     	'yorumMetni': 'kenyayı denemelisin'
 			     }
 			]
-
-		
-		}
 	},
 	{
-		'baslik':'Mekan Bilgisi',
-		'sayfaBaslik': 'Cafe Sessiz',
-		'mekanBilgisi': { 
+		
 			'ad': 'Cafe Sessiz',
 			'adres': 'Kafeler Caddesi',
 			'puan': 4,
@@ -218,7 +200,6 @@ const mekanBilgisi=function(req,res){
 			    	'kapanis':'02:00',
 			    	'kapali':false
 			    },
-
 			    {
 			    	'günler':'Cumartesi',
 			    	'acilis':'8:00',
@@ -229,7 +210,6 @@ const mekanBilgisi=function(req,res){
 			    	'günler':'Pazar',
 			    	'kapali':false
 			    }
-
 			],
 			'yorumlar': [
 			     {
@@ -238,15 +218,10 @@ const mekanBilgisi=function(req,res){
 			     	'tarih': '18 Ekim 2017',
 			     	'yorumMetni': 'cay çok güzel'
 			     }
-			]
-
-		
-		}
+			]		
 	},
 	{
-		'baslik':'Mekan Bilgisi',
-		'sayfaBaslik': 'Kahve Dünyası',
-		'mekanBilgisi': { 
+		
 			'ad': 'Kahve Dünyası',
 			'adres': 'Iyas',
 			'puan': 4,
@@ -262,7 +237,6 @@ const mekanBilgisi=function(req,res){
 			    	'kapanis':'24:00',
 			    	'kapali':false
 			    },
-
 			    {
 			    	'günler':'Cumartesi',
 			    	'acilis':'7:00',
@@ -273,7 +247,6 @@ const mekanBilgisi=function(req,res){
 			    	'günler':'Pazar',
 			    	'kapali':false
 			    }
-
 			],
 			'yorumlar': [
 			     {
@@ -283,15 +256,15 @@ const mekanBilgisi=function(req,res){
 			     	'yorumMetni': 'kahvesi çok iyi yaa :)'
 			     }
 			]
-
-		
-		}
-	}*/
-
-
+	}
+]
+}
 
 	);
 }
+
+
+
 
 const yorumEkle=function(req,res){
 	res.render('yorum-ekle',{'title':'Yorum Ekle'});

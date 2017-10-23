@@ -19,7 +19,7 @@ block content
         .col-xs-12.list-group-item
             //Linklerin, yıldızların ve adresin oluşturulması
             h4
-              a(href='/mekan/') #{mekan.ad}
+              a(href='/mekan/?id='+mekan.id)= mekan.ad 
               small &nbsp;
               +puanOlustur(mekan.puan)
               
