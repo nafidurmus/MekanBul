@@ -1,7 +1,8 @@
 extends layout
 include ortak_fonksiyonlar/fonksiyonlar
 block content
-  -var gelenMekan = mekanBilgisi[0]
+ 
+  -var gelenMekan 
     if id == 1
       -gelenMekan = mekanBilgisi[0]
     else if id == 2
