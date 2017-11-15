@@ -1,4 +1,4 @@
-[![Heroku'ya At](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nafidurmus/MekanBul)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nafidurmus/MekanBul)
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Mekan-Bul=https://github.com/nafidurmus/MekanBul)
 
