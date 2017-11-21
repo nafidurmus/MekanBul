@@ -1,42 +1,44 @@
 var mongoose = require( 'mongoose' );
 var dbURI = 'mongodb://localhost/mekanbul'; // canlıya atacağımız zaman mlab taki adresi yaz buraya
-// mongodb://<dbuser>:<dbpassword>@ds241395.mlab.com:41395/mekanbul  kullanıcı adı ve şifre oluştur buraya yaz
-mongoose.connect(dbURI,{'useMongoClient':true});
+//var dbURI = 'mongodb://admin:admin@ds115166.mlab.com:15166/mekanbul'
+// mongodb://admin:admin@ds115166.mlab.com:15166/mekanbul  //mlab ile bağlamak içiçn
+mongoose.connect(dbURI, { 'useMongoClient': true });
+//if (process.env.NODE_ENV === 'production') {  dbURI = process.env.MONGOLAB_URI;} //mlab ile bağlamak içiçn
 
 
 mongoose.connection.on('connected', function (){
-	console.log('Mongoose' + dbURI + 'adresteki veri tabanına bağlandı\n');
+	console.log('\nMongoose\n' + dbURI + '\nadresteki veri tabanına bağlandı\n');
 });
 
 mongoose.connection.on('error', function (err){
-	console.log('Mongoose bağlanto hatası\n:' + err);
+	console.log('\nMongoose bağlanto hatası\n:' + err);
 });
 
 mongoose.connection.on('disconnected', function (){
-	console.log('Mongoose bağlantısı kesildi\n:');
+	console.log('\nMongoose bağlantısı kesildi\n:');
 });
 
 kapat = function(msg, callback){
 	mongoose.connection.close(function(){
-		console.log('Mongoose kapatıldı\n' + msg);
+		console.log('\nMongoose kapatıldı\n' + msg);
 		callback();
 	});
 };
 //nodemon kapatma
 process.once('SIGUSR2', function(){
-	kapat('nodemon kapatıldı\n', function(){
+	kapat('\nnodemon kapatıldı\n', function(){
 		process.kill(process.pid, 'SIGUSR2');
 	});
 });
 //uygulama kapatma
 process.once('SIGINT', function(){
-	kapat('Uygulama kapatıldı\n', function(){
+	kapat('\nUygulama kapatıldı\n', function(){
 		process.exit(0);
 	});
 });
 //heroku kapatma
 process.once('SIGTERM', function(){
-	kapat('heroku kapatıldı\n', function(){
+	kapat('\nheroku kapatıldı\n', function(){
 		process.exit(0);
 	});
 });
