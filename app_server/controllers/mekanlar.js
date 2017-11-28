@@ -63,9 +63,9 @@ const mekanBilgisi=function(req,res){
 			],
 			'yorumlar':[
 			    {
-			       'yorumYapan':'Asım Sinan Yüksel',
+			       'yorumYapan':'nafi durmuş',
 			       'puan':3,
-			       'tarih':'18 Ekim 2017',
+			       'tarih':'30 Şubat 2018',
 			       'yorumMetni':'Kahveleri çok güzel'
 			    }
 

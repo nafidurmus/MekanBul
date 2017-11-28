@@ -4,17 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 require('./app_api/models/db');
-
 var index = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
 var routesApi = require('./app_api/routes/index'); 
-
 var app = express();
-
 // view engine setup
-app.set('views', path.join(__dirname,'app_server','views'));
+app.set('views', path.join(__dirname, 'app_server','views'));
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
@@ -42,12 +38,9 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the hata page
+  // render the error page
   res.status(err.status || 500);
   res.render('hata');
 });
 
 module.exports = app;
-
-
-
