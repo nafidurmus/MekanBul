@@ -45,9 +45,9 @@ const mekanlariListele= function (req, res) {
         cevapOlustur (res, 404, hata);
       } else {//her bir sonucu dolaş ve mekanlara ekle
         sonuclar.forEach(function(sonuc) {
-            mekanlar.push({
+            mekanlar.push({ //js veri eklemek için push metodu kullanılır.
                 mesafe: cevrimler.kilometre2Radyan(sonuc.dis),
-                ad: sonuc.obj.ad,
+                ad: sonuc.obj.ad, 
                 adres: sonuc.obj.adres,
                 puan: sonuc.obj.puan,
                 imkanlar: sonuc.obj.imkanlar,
