@@ -41,10 +41,14 @@ block content
             .panel-heading
               h2.panel-title Konum Bilgisi
             .panel-body
-              //Harita eklemek için Google'dan API anahtarı almanız gerekiyor. key kısmından sonra yer alan kısım API KEY.
+              //Harita eklemek için Google'dan API anahtarı almanız gerekiyor. key kısmından sonra yer alan kısım API KEY. hocanın key "AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE"
+              // 1.)https://developers.google.com/maps/get-started/ adresine gir.
+              // 2.) google Static Maps API ye tıkla .
+              // 3.) map a tıklayıp Get an API Key from the Google API Console seçiniz.
+              // 4.) get a key e tıklayıp kendi anahtarınızla değiştiriniz.
               -var enlem= mekanBilgisi.koordinatlar.enlem
               -var boylam= mekanBilgisi.koordinatlar.boylam
-              img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
+              img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCOfGlHmk7javFg0TyNkTCEgm21ZEpjOm0')
       .row
         .col-xs-12
           .panel.panel-primary.review-panel
