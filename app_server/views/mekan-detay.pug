@@ -60,7 +60,7 @@ block content
                     span.rating
                       +puanOlustur(yorum.puan)
                     span.reviewAuthor #{yorum.yorumYapan}  
-                    small.reviewTimestamp 
-                      | #{yorum.tarih}
+                    small.reviewTimestamp
+                      +tarihiFormatla(yorum.tarih) 
                   .col-xs-12
                     p #{yorum.yorumMetni}

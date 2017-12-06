@@ -12,6 +12,7 @@ block content
   .row
     //mobil uyumlu listeleme
     .col-xs-12.col-sm-12
+    .error=mesaj
       //each ifadesi dizide dolaşmayı sağlar.
       //Bir nevi for döngüsü
       each mekan in mekanlar
@@ -19,7 +20,9 @@ block content
         .col-xs-12.list-group-item
             //Linklerin, yıldızların ve adresin oluşturulması
             h4
-              a(href='/mekan')= mekan.ad
+              -var mekanid=mekan._id
+              a(href="/mekan/"+mekanid)= mekan.ad
+
               small &nbsp;
               //Javascript kodu eklemek için - işareti kullanılır.
               //For döngüsüyle mekan puanı kadar dolu yıldız.

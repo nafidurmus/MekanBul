@@ -18,6 +18,7 @@
     "morgan": "~1.9.0",
     "popper.js": "^1.12.5",
     "pug": "2.0.0-beta11",
+    "request": "^2.83.0",
     "serve-favicon": "~2.4.5"
   }
 }
