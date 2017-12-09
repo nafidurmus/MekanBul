@@ -173,21 +173,21 @@ const yorumumuEkle=function(req,res){
 		method : "POST",
 		json : gonderilenYorum
 	};
-	if (!gonderilenYorum.yorumYapan || !gonderilenYorum.puan || !gonderilenYorum.yorumMetni){
-		res.redirect('/mekan/' + mekanid + '/yorum/yeni?hata=evet');
-	}else{
-		request(
-			istekSecenekleri,
-			function(hata, cevap, body){
-				if (cevap.statusCode === 201){
-					res.redirect('/mekan/' + mekanid);
-				}
-				else if (cevap.statusCode === 400 && body.name && body.name === "ValidationError"){
-					res.redirect('/mekan/' + mekanid + '/yorum/yeni?hata=evet');
-				} 
-				else {
-					hataGoster(req, res, cevap.statusCode);
-				}
+	if (!gonderilenYorum.yorumYapan || !gonderilenYorum.puan || !gonderilenYorum.yorumMetni) {
+    res.redirect('/mekan/' + mekanid + '/yorum/yeni?hata=evet'); 
+  } else { 
+    request(
+      istekSecenekleri,
+      function(hata, cevap, body) {
+        if (cevap.statusCode === 201) {
+          res.redirect('/mekan/' + mekanid);
+        } 
+        else if (cevap.statusCode === 400 && body.name && body.name ==="ValidationError" ) {
+          res.redirect('/mekan/' + mekanid + '/yorum/yeni?hata=evet'); 
+        }
+        else {
+          hataGoster(req, res, cevap.statusCode);
+        } 
 			}
 			);
 	}

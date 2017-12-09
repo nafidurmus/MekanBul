@@ -11,7 +11,7 @@ var ctrlDigerleri=require('../controllers/digerleri');
 router.get('/',ctrlMekanlar.anaSayfa);
 router.get('/mekan/:mekanid', ctrlMekanlar.mekanBilgisi); 
 router.get('/mekan/:mekanid/yorum/yeni', ctrlMekanlar.yorumEkle);
-router.post('/mekan:/mekanid/yorum/yeni', ctrlMekanlar.yorumumuEkle);
+router.post('/mekan/:mekanid/yorum/yeni', ctrlMekanlar.yorumumuEkle); 
 
 
 //Yeni yorum rotası

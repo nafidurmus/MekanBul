@@ -6,6 +6,7 @@ block content
       h1= sayfaBaslik
   .row
     .col-xs-12.col-md-6
+      //form.form-horizontal(action="", method="post", role="form")
       form.form-horizontal(action="", method="post", role="form", id="yorumEkle")   
         - if (hata == "evet")
           .alert.alert-danger(role="alert") Tüm Alanlar Gerekli

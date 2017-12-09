@@ -9,10 +9,10 @@ var saatSema = new mongoose.Schema(
     }
     ); 
 var yorumSema = new mongoose.Schema({
-    ad: {type: String, required: true},
+    yorumYapan: {type:String, required: true},
     puan:{type:Number,required:true,min:0,max:5},
     yorumMetni: {type: String, required: true},
-    saat:{type:Date,default:Date.now}
+    tarih:{type:Date,default:Date.now}
     
 });
 
