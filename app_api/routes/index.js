@@ -1,10 +1,13 @@
 
 var express=require('express');
 var router=express.Router();
+
 //mekanlar.js yolu
 var ctrlMekanlar=require('../controllers/mekanlar');
+
 //yorumlar.js yolu
 var ctrlYorumlar=require('../controllers/yorumlar');
+
 //mekanlar
 router
 .route('/mekanlar')

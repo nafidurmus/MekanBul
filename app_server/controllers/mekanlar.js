@@ -9,6 +9,7 @@ var apiSecenekleri = {
 	apiYolu : '/api/mekanlar/'
 };
 
+
 var mesafeyiFormatla = function(mesafe){
 	var yeniMesafe, birim;
 	if(mesafe> 1){
@@ -108,7 +109,7 @@ var hataGoster = function(req,res,durum){
 //mekanBilgisi controller metodu
 //index.js dosyasındaki router.get('/mekan', ctrlMekanlar.mekanBilgisi);
 //ile metot url'ye bağlanıyor
-const mekanBilgisi=function(req,res){
+const mekanBilgisiGetir = function (req,res,callback){
 	var istekSecenekleri;
 
 	istekSecenekleri = {
@@ -120,34 +121,84 @@ const mekanBilgisi=function(req,res){
 	request(
 		istekSecenekleri,
 
-		function(hata,cevap,mekanDetaylari){
-			var gelenMekan=mekanDetaylari;
-			if(cevap.statusCode!=404){
+		function(hata, cevap, mekanDetaylari){
+			var gelenMekan = mekanDetaylari;
+			if(!hata){
 				gelenMekan.koordinatlar = {
 					enlem : mekanDetaylari.koordinatlar[0],
 					boylam : mekanDetaylari.koordinatlar[1]
 				};
-				detaySayfasiOlustur(req,res,gelenMekan);
-			}
-			else{
-				hataGoster(req,res,cevap,statusCode);
+				callback(req, res, gelenMekan);
+
+			}else{
+				hataGoster(req, res, cevap.statusCode);
 			}
 		}
 		);
-}
+};
+
+const mekanBilgisi = function(req,res,callback){
+	mekanBilgisiGetir(req, res, function(req, res, cevap){
+		detaySayfasiOlustur(req, res, cevap);
+	});
+};
+
+var yorumSayfasiOlustur = function(req, res , mekanBilgisi){
+	res.render('yorum-ekle', { baslik: mekanBilgisi.ad+ ' mekanına yorum ekle',
+		sayfaBaslik:mekanBilgisi.ad+ ' mekanına yorum ekle',
+		hata: req.query.hata
+	});
+};
 
 
 //yorumEkle controller metodu
 //index.js dosyasındaki router.get('/mekan/yorum/yeni', ctrlMekanlar.yorumEkle);
 //ile metot url'ye bağlanıyor
 const yorumEkle=function(req,res){
-	res.render('yorum-ekle',{'title':'Yorum Ekle'});
+	mekanBilgisiGetir(req, res, function(req,res, cevap){
+		yorumSayfasiOlustur(req, res, cevap);
+	});
 }
+
+const yorumumuEkle=function(req,res){
+	var istekSecenekleri, gonderilenYorum, mekanid;
+	mekanid = req.params.mekanid;
+	gonderilenYorum = {
+		yorumYapan: req.body.name,
+		puan: parseInt(req.body.rating, 10),
+		yorumMetni: req.body.review
+	};
+	istekSecenekleri = {
+		url : apiSecenekleri.sunucu+ apiSecenekleri.apiYolu+mekanid+'/yorumlar',
+		method : "POST",
+		json : gonderilenYorum
+	};
+	if (!gonderilenYorum.yorumYapan || !gonderilenYorum.puan || !gonderilenYorum.yorumMetni){
+		res.redirect('/mekan/' + mekanid + '/yorum/yeni?hata=evet');
+	}else{
+		request(
+			istekSecenekleri,
+			function(hata, cevap, body){
+				if (cevap.statusCode === 201){
+					res.redirect('/mekan/' + mekanid);
+				}
+				else if (cevap.statusCode === 400 && body.name && body.name === "ValidationError"){
+					res.redirect('/mekan/' + mekanid + '/yorum/yeni?hata=evet');
+				} 
+				else {
+					hataGoster(req, res, cevap.statusCode);
+				}
+			}
+			);
+	}
+};
 
 //metotlarımızı kullanmak üzere dış dünyaya aç
 //diğer dosyalardan require ile alabilmemizi sağlayacak
 module.exports = {
 anaSayfa,
 mekanBilgisi,
-yorumEkle
+yorumEkle,
+yorumumuEkle
+
 };

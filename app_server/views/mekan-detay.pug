@@ -54,7 +54,8 @@ block content
           .panel.panel-primary.review-panel
             .panel-heading
               //Yorum ekle düğmesini ekle
-              a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle
+              -var mekanid=mekanBilgisi._id
+              a.btn.btn-default.pull-right(href='/mekan/'+mekanid+'/yorum/yeni') Yorum Ekle
               h2.panel-title Müşteri Yorumları
             .panel-body.review-container
                each yorum in mekanBilgisi.yorumlar
