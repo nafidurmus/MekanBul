@@ -1,0 +1,44 @@
+extends layout
+include ortak_fonksiyonlar/fonksiyonlar
+block content
+  #banner.page-header
+    //satır oluştur
+    .row
+      .col-lg-6
+        //Controller içinde tanımladığımız değişkenleri kullandık
+        //Ya eşittir işaretiyle ya da #{} biçiminde
+        h1= sayfaBaslik.siteAd
+          small &nbsp;#{sayfaBaslik.aciklama}
+  .row
+    //mobil uyumlu listeleme
+    .col-xs-12.col-sm-12
+    .error=mesaj
+      //each ifadesi dizide dolaşmayı sağlar.
+      //Bir nevi for döngüsü
+      each mekan in mekanlar
+       .row.list-group
+        .col-xs-12.list-group-item
+            //Linklerin, yıldızların ve adresin oluşturulması
+            h4
+              -var mekanid=mekan._id
+              a(href='/mekan/'+mekanid)= mekan.ad
+              small &nbsp;
+              //Javascript kodu eklemek için - işareti kullanılır.
+              //For döngüsüyle mekan puanı kadar dolu yıldız.
+              //Geri kalanlar boş yıldız.
+              +puanOlustur(mekan.puan)
+            span.btn.pull-right
+              a.btn.btn-primary.pull-right(href='/admin/mekan/'+mekan._id+'/sil') Mekan Sil
+            span.btn.pull-right
+              a.btn.btn-danger.pull-right(href='/admin/mekan/'+mekan._id+'/guncelle') Mekan Güncelle
+            p.address= mekan.adres
+            p
+              //imkanlar da dizi olduğu için yine each ile dolaştık
+              each imkan in mekan.imkanlar
+               span.label.label-warning= imkan
+               | &nbsp;      
+    .col-xs-12.col-sm-4
+    .row
+      .column.pull-right
+        a.btn.btn-success.pull-right(href="/admin/mekan/yeni") Yeni Mekan Ekle
+

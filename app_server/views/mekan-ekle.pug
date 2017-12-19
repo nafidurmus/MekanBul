@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  .row.page-header
+    .col-lg-12
+      h1= sayfaBaslik
+  .row
+    .col-xs-12.col-md-6
+      form.form-horizontal(action="", method="post", role="form", id="mekanEkle")
+        - if (hata == "evet")
+          .alert.alert-danger(role="alert") Tüm alanlar gerekli.      
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="mekanAdi") Mekan Adı: 
+          .col-xs-12.col-sm-10
+            input#mekanAdi.form-control(name="mekanAdi")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="mekanAdresi") Mekan Adresi: 
+          .col-xs-12.col-sm-10
+            input#mekanAdresi.form-control(name="mekanAdresi")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="imkanlar") İmkanlar: 
+          .col-xs-12.col-sm-10
+            input#imkanlar.form-control(name="imkanlar")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="enlem") Enlem: 
+          .col-xs-12.col-sm-10
+            input#enlem.form-control(name="enlem")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="boylam") Boylam: 
+          .col-xs-12.col-sm-10
+            input#boylam.form-control(name="boylam")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="gunler1") Gunler-1: 
+          .col-xs-12.col-sm-10
+            input#gunler1.form-control(name="gunler1")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="acilis1") Açılış-1: 
+          .col-xs-12.col-sm-10
+            input#acilis1.form-control(name="acilis1")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="kapanis1") Kapanış-1: 
+          .col-xs-12.col-sm-10
+            input#kapanis1.form-control(name="kapanis1")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="gunler2") Gunler-2: 
+          .col-xs-12.col-sm-10
+            input#gunler2.form-control(name="gunler2")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="acilis2") Açılış-2: 
+          .col-xs-12.col-sm-10
+            input#acilis2.form-control(name="acilis2")
+        .form-group
+          label.col-xs-10.col-sm-2.control-label(for="kapanis2") Kapanış-2: 
+          .col-xs-12.col-sm-10
+            input#kapanis2.form-control(name="kapanis2")
+        button.btn.btn-danger.pull-right Mekanı Ekle
+    .col-xs-12.col-md-4

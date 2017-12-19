@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mekan = mongoose.model('mekan');
+const mekan = mongoose.model('mekan'); //mongo db de ki mekan koleksiyonu aslır.
 const cevapOlustur = function (res,status,content) {
   res
     .status(status)
@@ -19,6 +19,27 @@ var cevrimler= (function(){
     kilometre2Radyan: kilometre2Radyan
   }; 
 })();
+
+
+const tumMekanlariListele = function(req, res){ //admin sayfası iççin 
+    mekan.find({}, function (hata, sonuclar){ //koleksiyon içindeki bütün verileri alır.
+    var mekanlar = [];
+      if (hata) {
+        cevapOlustur (res, 404, hata);
+      } else {//her bir sonucu dolaş ve mekanlara ekle
+        sonuclar.forEach(function(sonuc) {
+            mekanlar.push({
+                ad: sonuc.ad,
+                adres: sonuc.adres,
+                puan: sonuc.puan,
+                imkanlar: sonuc.imkanlar,
+                _id: sonuc._id
+            }); });
+        cevapOlustur (res, 200, mekanlar);
+        }
+    });
+};
+
 
 const mekanlariListele= function (req, res) {
     //URL'den enlem ve boylam parametrelerini al
@@ -45,9 +66,9 @@ const mekanlariListele= function (req, res) {
         cevapOlustur (res, 404, hata);
       } else {//her bir sonucu dolaş ve mekanlara ekle
         sonuclar.forEach(function(sonuc) {
-            mekanlar.push({ //js veri eklemek için push metodu kullanılır.
+            mekanlar.push({
                 mesafe: cevrimler.kilometre2Radyan(sonuc.dis),
-                ad: sonuc.obj.ad, 
+                ad: sonuc.obj.ad,
                 adres: sonuc.obj.adres,
                 puan: sonuc.obj.puan,
                 imkanlar: sonuc.obj.imkanlar,
@@ -69,12 +90,12 @@ const mekanEkle= function (req, res) {
                 gunler: req.body.gunler1,
                 acilis: req.body.acilis1,
                 kapanis: req.body.kapanis1,
-                kapali: req.body.kapali1,
+                kapali: false
             }, {
                 gunler: req.body.gunler2,
                 acilis: req.body.acilis2,
                 kapanis: req.body.kapanis2,
-                kapali: req.body.kapali2,
+                kapali: false
             }]
         }, function(hata, mekan) {
             if (hata) {
@@ -104,7 +125,6 @@ if (req.params && req.params.mekanid) {
     	cevapOlustur(res, 404, hata);
     	return;
     }
-    // hata yoksa mekan nesnesini döndür.
     cevapOlustur(res, 200, mekan);
 });
 } 
@@ -142,12 +162,12 @@ const mekanGuncelle= function (req, res) {
 						gunler: req.body.gunler1,
 						acilis: req.body.acilis1,
 						kapanis: req.body.kapanis1,
-						kapali: req.body.kapali1,
+						kapali: false,
 					}, {
 						gunler: req.body.gunler2,
 						acilis: req.body.acilis2,
 						kapanis: req.body.kapanis2,
-						kapali: req.body.kapali2,
+						kapali: false,
 					}];
 					gelenMekan.save(function(hata, mekan) {
 						if (hata) {
@@ -159,7 +179,6 @@ const mekanGuncelle= function (req, res) {
 				}); }
 
 const mekanSil= function (req, res) {
-
             var mekanid = req.params.mekanid;
             if (mekanid) {
                 mekan
@@ -185,6 +204,7 @@ mekanlariListele,
 mekanEkle,
 mekanGetir,
 mekanGuncelle,
+tumMekanlariListele,
 mekanSil
  }
 
