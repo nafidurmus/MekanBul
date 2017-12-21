@@ -7,6 +7,6 @@ hocayla birlikte yaptığımız mekanbul adlı uygulamanın kaynak kodlarıdır.
 
 
 
-https://mekanbul123.herokuapp.com/ sitesinden görüntüleyebilirsiniz. :)
+https://nafidurmusmekanbul.herokuapp.com/ sitesinden görüntüleyebilirsiniz. :)
 
 
