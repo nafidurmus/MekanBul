@@ -4,7 +4,7 @@ Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği Web Teknolojileri ders
 hocayla birlikte yaptığımız mekanbul adlı uygulamanın kaynak kodlarıdır.
 
 [Ders sunularına buradan ulaşabilirsiniz. ](http://www.asimsinanyuksel.com/web/)
-
+Sunumlar yukarıdaki sitede yoksa [Sunumlar](https://github.com/nafidurmus/MekanBul/tree/master/sunumlar)
 
 
 https://nafidurmusmekanbul.herokuapp.com/ sitesinden görüntüleyebilirsiniz. :)
